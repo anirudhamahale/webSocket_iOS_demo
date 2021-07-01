@@ -11,7 +11,7 @@ import Foundation
 @available(iOS 13.0, *)
 class NativeWebSocket: NSObject, WebSocketProvider {
 	
-	var delegate: WebSocketProviderDelegate?
+	weak var delegate: WebSocketProviderDelegate?
 	private let url: URL
 	private var socket: URLSessionWebSocketTask?
 	private lazy var urlSession: URLSession = URLSession(configuration: .default, delegate: self, delegateQueue: nil)

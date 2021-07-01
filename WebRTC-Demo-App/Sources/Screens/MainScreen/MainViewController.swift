@@ -12,8 +12,12 @@ import WebRTC
 
 class MainViewController: UIViewController {
 	
-	private let signalClient: SignalingClient
-	private let webRTCClient: WebRTCClient
+	deinit {
+		print("MainViewController 🔥")
+	}
+	
+	private let signalClient = SignalingClient.build()
+	private let webRTCClient = WebRTCClient.build()
 	private lazy var videoViewController = VideoViewController(webRTCClient: self.webRTCClient)
 	
 	@IBOutlet private weak var speakerButton: UIButton?
@@ -92,9 +96,7 @@ class MainViewController: UIViewController {
 		}
 	}
 	
-	init(signalClient: SignalingClient, webRTCClient: WebRTCClient) {
-		self.signalClient = signalClient
-		self.webRTCClient = webRTCClient
+	init() {
 		super.init(nibName: String(describing: MainViewController.self), bundle: Bundle.main)
 	}
 	

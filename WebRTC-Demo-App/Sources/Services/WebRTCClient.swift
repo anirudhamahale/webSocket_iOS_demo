@@ -208,6 +208,10 @@ final class WebRTCClient: NSObject {
 	func disconnect() {
 		self.remoteDataChannel?.close()
 	}
+	
+	static func build() -> WebRTCClient {
+		return WebRTCClient(iceServers: Config.default.webRTCIceServers)
+	}
 }
 
 extension WebRTCClient: RTCPeerConnectionDelegate {
