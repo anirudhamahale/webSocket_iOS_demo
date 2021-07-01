@@ -65,6 +65,7 @@ Disclaimer: I am not sure if this is the best way doing it but this has worked f
 WebRTC and CallKit talk from 2016: https://youtu.be/JB2MdcY1MKs?t=6m23s
 
 ## References:
+* Copy of: https://github.com/stasel/WebRTC-iOS
 * WebRTC website: https://webrtc.org/
 * WebRTC source code: https://webrtc.googlesource.com/src
 * WebRTC iOS compile guide: https://webrtc.github.io/webrtc-org/native-code/ios/
