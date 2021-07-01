@@ -10,6 +10,18 @@ import Foundation
 
 @available(iOS 13.0, *)
 class NativeWebSocket: NSObject, WebSocketProvider {
+	func testConnection() {
+		let dict = ["type": "user", "name": "Anirudha"]
+		
+		let encoder = JSONEncoder()
+		if let jsonData = try? encoder.encode(dict) {
+			socket?.send(URLSessionWebSocketTask.Message.data(jsonData), completionHandler: { (error) in
+				if let error = error {
+					print(error)
+				}
+			})
+		}
+	}
 	
 	weak var delegate: WebSocketProviderDelegate?
 	private let url: URL

@@ -72,6 +72,10 @@ final class SignalingClient {
 		}
 		return SignalingClient(webSocket: webSocketProvider)
 	}
+	
+	func test() {
+		webSocket.testConnection()
+	}
 }
 
 

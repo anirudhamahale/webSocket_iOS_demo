@@ -10,6 +10,14 @@ import Foundation
 import Starscream
 
 class StarscreamWebSocket: WebSocketProvider {
+	func testConnection() {
+		let dict = ["type": "user", "name": "Anirudha"]
+		
+		let encoder = JSONEncoder()
+		if let jsonData = try? encoder.encode(dict) {
+			socket.write(data: jsonData)
+		}
+	}
 	
 	weak var delegate: WebSocketProviderDelegate?
 	private let socket: WebSocket

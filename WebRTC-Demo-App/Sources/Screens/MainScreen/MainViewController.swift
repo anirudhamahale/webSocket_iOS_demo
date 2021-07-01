@@ -171,6 +171,7 @@ class MainViewController: UIViewController {
 	}
 	
 	@IBAction func sendDataDidTap(_ sender: UIButton) {
+		signalClient.test()
 		let alert = UIAlertController(title: "Send a message to the other peer",
 																	message: "This will be transferred over WebRTC data channel",
 																	preferredStyle: .alert)

@@ -13,6 +13,7 @@ protocol WebSocketProvider: class {
 	func connect()
 	func send(data: Data)
 	func disconnect()
+	func testConnection()
 }
 
 protocol WebSocketProviderDelegate: class {
