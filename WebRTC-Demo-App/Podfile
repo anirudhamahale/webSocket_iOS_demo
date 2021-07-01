@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'WebRTC-Demo' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  
+	pod 'Starscream'
+	#pod 'GoogleWebRTC'
+  pod 'netfox'
+  # Pods for WebRTC-Demo
+
+end

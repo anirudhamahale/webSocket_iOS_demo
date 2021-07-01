@@ -1,0 +1,20 @@
+PODS:
+  - netfox (1.19.0)
+  - Starscream (4.0.4)
+
+DEPENDENCIES:
+  - netfox
+  - Starscream
+
+SPEC REPOS:
+  trunk:
+    - netfox
+    - Starscream
+
+SPEC CHECKSUMS:
+  netfox: efeec1d23406df6cd605212f09a40957bb5654eb
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
+
+PODFILE CHECKSUM: 5ac870c826e7cda6f83d11bac3739fa69b6d7ba8
+
+COCOAPODS: 1.10.1

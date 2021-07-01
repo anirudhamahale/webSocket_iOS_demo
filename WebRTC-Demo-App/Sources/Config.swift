@@ -9,7 +9,7 @@
 import Foundation
 
 // Set this to the machine's address which runs the signaling server. Do not use 'localhost' or '127.0.0.1'
-fileprivate let defaultSignalingServerUrl = URL(string: <#"ws://localhost:8080"#>)!
+fileprivate let defaultSignalingServerUrl = URL(string: "ws://supermd-webrtc.herokuapp.com")!
 
 // We use Google's public stun servers. For production apps you should deploy your own stun/turn servers.
 fileprivate let defaultIceServers = ["stun:stun.l.google.com:19302",
@@ -24,3 +24,7 @@ struct Config {
     
     static let `default` = Config(signalingServerUrl: defaultSignalingServerUrl, webRTCIceServers: defaultIceServers)
 }
+
+// https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API#guides
+// https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Signaling_and_video_calling
+

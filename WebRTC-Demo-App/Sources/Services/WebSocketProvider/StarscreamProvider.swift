@@ -10,40 +10,44 @@ import Foundation
 import Starscream
 
 class StarscreamWebSocket: WebSocketProvider {
-
-    var delegate: WebSocketProviderDelegate?
-    private let socket: WebSocket
-    
-    init(url: URL) {
-        self.socket = WebSocket(url: url)
-        self.socket.delegate = self
-    }
-    
-    func connect() {
-        self.socket.connect()
-    }
-    
-    func send(data: Data) {
-        self.socket.write(data: data)
-    }
+	
+	var delegate: WebSocketProviderDelegate?
+	private let socket: WebSocket
+	
+	init(url: URL) {
+		self.socket = WebSocket(request: URLRequest(url: url))
+		self.socket.delegate = self
+	}
+	
+	func connect() {
+		self.socket.connect()
+	}
+	
+	func send(data: Data) {
+		self.socket.write(data: data)
+	}
+	
+	func disconnect() {
+		self.socket.disconnect()
+	}
 }
 
 extension StarscreamWebSocket: Starscream.WebSocketDelegate {
-    func websocketDidConnect(socket: WebSocketClient) {
-        self.delegate?.webSocketDidConnect(self)
-    }
-    
-    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        self.delegate?.webSocketDidDisconnect(self)
-    }
-    
-    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        debugPrint("Warning: Expected to receive data format but received a string. Check the websocket server config.")
-    }
-    
-    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-        self.delegate?.webSocket(self, didReceiveData: data)
-    }
-    
-    
+	func didReceive(event: WebSocketEvent, client: WebSocket) {
+		switch event {
+			case let .connected(dict):
+				print(dict)
+				self.delegate?.webSocketDidConnect(self)
+			case let .disconnected(string, id):
+				print(string, id)
+				self.delegate?.webSocketDidDisconnect(self)
+			case let .text(message):
+				print(message)
+			// debugPrint("Warning: Expected to receive data format but received a string. Check the websocket server config.")
+			case let .binary(data):
+				self.delegate?.webSocket(self, didReceiveData: data)
+			default:
+				break
+		}
+	}
 }
